@@ -4,6 +4,7 @@
   "description": "sethbethandbeyond.com wedding website",
   "main": "static-src/js/index.js",
   "scripts": {
+    "build:css": "node-sass --include-path node_modules/bulma/ styles/main.scss > static/css/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,9 @@
     "bulma"
   ],
   "author": "Seth Szymanski",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bulma": "^0.4.2",
+    "node-sass": "^4.5.3"
+  }
 }
