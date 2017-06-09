@@ -1,0 +1,20 @@
+{
+  "name": "sethbethandbeyond.com",
+  "version": "0.1.0",
+  "description": "sethbethandbeyond.com wedding website",
+  "main": "static-src/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/sethbethandbeyond.com"
+  },
+  "keywords": [
+    "wedding",
+    "hugo",
+    "bulma"
+  ],
+  "author": "Seth Szymanski",
+  "license": "MIT"
+}
