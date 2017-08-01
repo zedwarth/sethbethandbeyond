@@ -4,9 +4,17 @@ $images : "/images/";
 
 .title,
 .subtitle {
-  color: #fff;
+  color: $white;
 }
 
+.menu {
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: $white;
+  }
+}
 .bench-parallax {
   background-image: url(#{$images}main-hero.jpg);
   background-attachment: fixed;
