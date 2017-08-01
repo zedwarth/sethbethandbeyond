@@ -1,0 +1,62 @@
+@import "custom-bulma";
+
+$images : "/images/";
+
+.title,
+.subtitle {
+  color: #fff;
+}
+
+.bench-parallax {
+  background-image: url(#{$images}main-hero.jpg);
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+.aviary {
+  background-image: url(#{$images}eagle.jpg);
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+.hotel{
+  background-image: url(#{$images}william-penn.jpg);
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+.staircase{
+  background-image: url(#{$images}museumstaircase.jpg);
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+.logo {
+  max-width: 350px;
+}
+
+.registry {
+  background-image: url(#{$images}peacocks.jpg);
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+.google-maps {
+  position: relative;
+  padding-bottom: 75%; // This is the aspect ratio
+  height: 0;
+  overflow: hidden;
+}
+
+.google-maps iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}

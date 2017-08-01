@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Seth Beth & Beyond</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/main.js"></script>
+
+  </head>
+  <body>
+    <section class="hero is-fullheight staircase">
+      <div class="hero-body">
+        <div class="container has-text-right">
+          <h1 class="title">
+            Beth Oltrogge<br>Seth Szymanski
+          </h1>
+          <h2 class="subtitle">
+            October 1st, 2017
+          </h2>
+        </div>
+      </div>
+
+      <div class="hero-foot">
+        {{ partial "navbar.html" . }}
+      </div>
+    </section>
+
+    {{ partial "map.html" . }}
+    {{ partial "hotel.html" . }}
+    {{ partial "aviary.html" . }}
+    {{ partial "registry.html" . }}
+
+  </body>
+</html>
