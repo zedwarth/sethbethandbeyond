@@ -20,44 +20,48 @@ $images : "/images/";
   padding-top: 20px;
 }
 
-.bench-parallax {
-  background-image: url(#{$images}main-hero.jpg);
+@mixin parallax {
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
+  @include touch {
+    background-attachment: initial;
+  }
+}
+
+.bench-parallax {
+  @include parallax
+  background-image: url(#{$images}main-hero.jpg);
 }
 
 .aviary {
+  @include parallax
   background-image: url(#{$images}eagle.jpg);
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
 }
 
 .hotel{
+  @include parallax
   background-image: url(#{$images}william-penn.jpg);
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
 }
 
-.staircase{
+.splash{
+  @include parallax
   background-image: url(#{$images}museumstaircase.jpg);
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
-}
-
-img .logo {
-  padding-top: 50px;
-  max-width: 200px;
+  @include touch {
+    .hero-body .container {
+      top: -5em;
+    }
+  }
 }
 
 .registry {
+  @include parallax
   background-image: url(#{$images}peacocks.jpg);
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
+}
+
+.registry img {
+  padding-top: 50px;
+  max-width: 200px;
 }
 
 .google-maps {

@@ -5,6 +5,7 @@
   "main": "static-src/js/index.js",
   "scripts": {
     "build:css": "node-sass --include-path node_modules/bulma/ src-static/scss/main.scss > static/css/main.css",
+    "postbuild:css": "postcss static/css/main.css --use autoprefixer -d static/css/",
     "build": "npm run build:css",
     "watch:css": "node-sass -w --include-path node_modules/bulma/ src-static/scss/main.scss > static/css/main.css",
     "prewatch": "npm run build",
@@ -22,9 +23,11 @@
   "author": "Seth Szymanski",
   "license": "MIT",
   "dependencies": {
+    "autoprefixer": "^7.1.2",
     "bulma": "^0.5.0",
     "hugo-cli": "^0.4.2",
     "node-sass": "^4.5.3",
-    "parallelshell": "^3.0.1"
+    "parallelshell": "^3.0.1",
+    "postcss-cli": "^4.1.0"
   }
 }
