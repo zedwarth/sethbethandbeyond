@@ -15,6 +15,11 @@ $images : "/images/";
     color: $white;
   }
 }
+
+.registry h1 {
+  padding-top: 20px;
+}
+
 .bench-parallax {
   background-image: url(#{$images}main-hero.jpg);
   background-attachment: fixed;
@@ -43,8 +48,9 @@ $images : "/images/";
   background-size: cover;
 }
 
-.logo {
-  max-width: 350px;
+img .logo {
+  padding-top: 50px;
+  max-width: 200px;
 }
 
 .registry {

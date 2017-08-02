@@ -8,7 +8,7 @@
     "build": "npm run build:css",
     "watch:css": "node-sass -w --include-path node_modules/bulma/ src-static/scss/main.scss > static/css/main.css",
     "prewatch": "npm run build",
-    "watch": "parallelshell 'hugo server' 'npm run watch:css'"
+    "watch": "parallelshell 'hugo server --bind 0.0.0.0' 'npm run watch:css'"
   },
   "repository": {
     "type": "git",
