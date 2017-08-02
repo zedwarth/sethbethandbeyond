@@ -1,19 +1,28 @@
 {
   "name": "sethbethandbeyond.com",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "sethbethandbeyond.com wedding website",
   "main": "static-src/js/index.js",
   "scripts": {
-    "build:css": "node-sass --include-path node_modules/bulma/ src-static/scss/main.scss > static/css/main.css",
-    "postbuild:css": "postcss static/css/main.css --use autoprefixer -d static/css/",
+    "autoprefixer": "postcss -u autoprefixer -r static/css/*",
     "build": "npm run build:css",
-    "watch:css": "node-sass -w --include-path node_modules/bulma/ src-static/scss/main.scss > static/css/main.css",
-    "prewatch": "npm run build",
-    "watch": "parallelshell 'hugo server --bind 0.0.0.0' 'npm run watch:css'"
+    "build:css": "npm run autoprefixer",
+    "build:hugo": "hugo",
+    "clean": "parallelshell 'npm run clean:static' 'npm run clean:public'",
+    "clean:static": "rimraf static/css/* static/js/*",
+    "clean:public": "rimraf public",
+    "postbuild": "npm run build:hugo",
+    "prebuild": "npm run clean",
+    "prebuild:css": "npm run scss",
+    "prewatch:css": "npm run build:css",
+    "scss": "node-sass --include-path node_modules/bulma/ src-static/scss/main.scss > static/css/main.css",
+    "watch": "parallelshell 'npm run watch:hugo' 'npm run watch:css'",
+    "watch:css": "onchange 'src-static/scss/*.scss' -- npm run build:css",
+    "watch:hugo": "hugo server --bind 0.0.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/sethbethandbeyond.com"
+    "url": "https://github.com/zedwarth/sethbethandbeyond.git"
   },
   "keywords": [
     "wedding",
@@ -22,12 +31,15 @@
   ],
   "author": "Seth Szymanski",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "autoprefixer": "^7.1.2",
     "bulma": "^0.5.0",
     "hugo-cli": "^0.4.2",
     "node-sass": "^4.5.3",
+    "onchange": "^3.2.1",
     "parallelshell": "^3.0.1",
-    "postcss-cli": "^4.1.0"
+    "postcss-cli": "^4.1.0",
+    "rimraf": "^2.6.1"
   }
 }
