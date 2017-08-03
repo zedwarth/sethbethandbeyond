@@ -7,17 +7,22 @@ $images : "/images/";
   color: $white;
 }
 
-.menu {
+.menu-bar {
   a:link,
   a:visited,
   a:hover,
   a:active {
+    font-size: 1.25rem;
     color: $white;
   }
 }
 
 .registry h1 {
   padding-top: 20px;
+}
+
+li {
+  list-style-type: decimal;
 }
 
 @mixin parallax {
@@ -93,6 +98,13 @@ $images : "/images/";
   padding-bottom: 75%; // This is the aspect ratio
   height: 0;
   overflow: hidden;
+}
+
+.trolly {
+  img {
+    max-width:100%;
+    max-height:100%;
+  }
 }
 
 .google-maps iframe {
