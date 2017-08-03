@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{{ block "title" . }}
-			{{ .Site.Title }}
-			{{ end }}</title>
-			</title>
-		<link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
-		<link rel="stylesheet" href="css/main.css" />
-		<script src="js/main.js"></script>
-	</head>
-	<body>
-		{{ block "main" . }}
-		{{ end }}
-	</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ block "title" . }}
+      {{ .Site.Title }}
+      {{ end }}</title>
+  </title>
+  <link rel="stylesheet" href="css/main.css" />
+  <script src="js/main.js"></script>
+</head>
+<body>
+  {{ block "main" . }}
+  {{ end }}
+</body>
 </html>
