@@ -59,6 +59,30 @@ $images : "/images/";
   background-image: url(#{$images}peacocks.jpg);
 }
 
+.four-oh-four {
+  @include parallax
+  background-image: url(#{$images}penguins.gif);
+  
+  a:link,
+  a:visited,
+  a:active {
+    color: $black;
+  }
+
+  a:hover {
+    color: $white;
+  }
+
+  @include desktop {
+    h1 {
+      font-size: 6rem;
+    }
+    h2 {
+      font-size: 4rem;
+    }
+  }
+}
+
 .registry img {
   padding-top: 50px;
   max-width: 200px;
