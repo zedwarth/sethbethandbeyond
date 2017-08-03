@@ -9,7 +9,7 @@
     "build": "parallelshell 'npm run build:css' 'npm run build:babel'",
     "build:babel": "npm run babel",
     "build:css": "npm run autoprefixer",
-    "build:hugo": "hugo",
+    "build:hugo": "hugo --disableRSS --disableSitemap",
     "clean": "parallelshell 'npm run clean:static' 'npm run clean:public'",
     "clean:static": "rimraf static/css/* static/js/*",
     "clean:public": "rimraf public",
