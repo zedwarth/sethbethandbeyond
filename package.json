@@ -1,6 +1,6 @@
 {
   "name": "sethbethandbeyond.com",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "sethbethandbeyond.com wedding website",
   "main": "static-src/js/index.js",
   "scripts": {
