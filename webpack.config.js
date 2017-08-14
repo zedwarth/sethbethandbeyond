@@ -11,7 +11,11 @@ module.exports = {
     rules: [{
       test: /\.(sass|scss)$/,
       include: path.resolve(__dirname, './src/scss'),
-      use: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      use: ExtractTextPlugin.extract([
+        'css-loader',
+        'postcss-loader',
+        'sass-loader'
+      ])
     }]
   },
   plugins: [
