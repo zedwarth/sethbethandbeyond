@@ -15,8 +15,16 @@ module.exports = {
         'css-loader',
         'postcss-loader',
         'sass-loader'
-      ])
-    }]
+      ])},
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?.*$|$)/,
+        use: [{
+          loader: 'file-loader', 
+          options: {
+            outputPath: '/css/'
+          }
+        }]
+      }]
   },
   plugins: [
     new ExtractTextPlugin({
