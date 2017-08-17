@@ -1,0 +1,182 @@
++++
+title = "RSVP"
+type = "page"
+layout = "RSVP"
++++
+<section class="hero is-large is-bold rsvp">
+  <div class="hero-body">
+  </div>
+  <div class="hero-footer">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        RSVP
+      </h1>
+      <h2 class="subtitle">
+        Your reply is cordially requested by August 30th
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <form id="rsvp"
+      v-on:submit.prevent="onSubmit">
+
+      <!-- Are you coming? --> 
+      <div class="tabs is-centered is-toggle">
+        <ul>
+          <li v-bind:class="{ 'is-active': attending }">
+            <a v-on:click="attending  = true">
+              <span class="icon is-small"><i class="fa fa-heart"></i></span>
+              <span>Accept with pleasure</span>
+            </a>
+          </li>
+          <li v-bind:class="{ 'is-active': attending === false }">
+            <a v-on:click="attending = false">
+              <span class="icon is-small"><i class="fa fa-heart-o"></i></span>
+              <span>Decline with regret</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <section class="section"
+        v-if="attending !== null">
+        <div class="field is-horizontal"
+          v-if="attending === false">
+          <div class="field-label is-normal">
+            <label class="label">Your Name</label>
+          </div>
+          <div class="field-body">
+            <div class="field has-addons">
+              <p class="control is-expanded has-icons-left">
+                <input class="input" type="text" placeholder="Full Name"
+                v-model="guests[0].name">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Your Email</label>
+          </div>
+          <div class="field-body">
+            <div class="field has-addons">
+              <p class="control is-expanded has-icons-left">
+                <input class="input" type="email"
+                v-bind:placeholder="attending ? 'Guest@example.com' : ''"
+                v-model="email">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guest entry -->
+        <section class="section"
+          v-if="attending">
+          <template v-for="(guest, index) in guests">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Guest</label>
+              </div>
+              <div class="field-body">
+                <div class="field has-addons">
+                  <div class="control has-icons-left is-expanded">
+                    <input class="input" type="text" placeholder="Full Name"
+                    v-model="guest.name">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-user"></i>
+                    </span>
+                  </div>
+                  <p class="control">
+                    <span class="select">
+                      <select v-model="guest.age">
+                        <option selected disabled>Age</option>
+                        <option>Over 21</option>
+                        <option>16-20</option>
+                        <option>6-15 </option>
+                        <option>0-5  </option>
+                      </select>
+                    </span>
+                  </p>
+                  <p class="control has-icon-right">
+                    <button class="button"
+                      v-bind:class="{ 'is-info': guest.dietary, 'is-active': guest.dietary}"
+                      v-on:click.prevent="dietaryToggle(guest)">
+                      <span class="icon is-small is-right"><i class="fa fa-cutlery"></i></span>
+                      <span>Dietary Restrictions</span>
+                    </button>
+                  </p>
+                  <p class="control">
+                    <div class="button"
+                      v-if="multiParty"
+                      v-on:click.prevent="removeGuest(index)">
+                      <span class="icon is-small"><i class="fa fa-user-times"></i></span>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dietary Textarea -->
+            <div class="field is-horizontal"
+              v-if="guest.dietary">
+              <div class="field-label is-normal">
+                <label class="label">Dietary Restrictions</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <textarea class="textarea" 
+                      v-bind:placeholder="dietaryPlaceholder"
+                      v-model="guest.dietaryNotes"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <!-- Add Guest -->
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <div class="button"
+                    v-on:click="addGuest()">
+                    <span class="icon is-small"><i class="fa fa-user-plus"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        </br>
+        <!-- Submit -->
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <!-- Left empty for spacing -->
+          </div>
+          <div class="field-body">
+            <div class="field is-grouped is-grouped-right">
+              <div class="control">
+                <button class="button is-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </section>
