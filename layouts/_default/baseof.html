@@ -8,10 +8,10 @@
       {{ end }}</title>
   </title>
   <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    {{ block "main" . }}
+    {{ end }}
+  </body>
   <script src="/js/main.js"></script>
-</head>
-<body>
-  {{ block "main" . }}
-  {{ end }}
-</body>
 </html>

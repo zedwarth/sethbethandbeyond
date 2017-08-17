@@ -30,5 +30,10 @@ module.exports = {
     new ExtractTextPlugin({
       filename: '/css/[name].css'
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
+}
 };

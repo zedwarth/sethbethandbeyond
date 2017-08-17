@@ -3,7 +3,7 @@ title = "RSVP"
 type = "page"
 layout = "RSVP"
 +++
-<section class="hero is-fullheight is-bold rsvp">
+<section class="hero is-large is-bold rsvp">
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
@@ -17,18 +17,18 @@ layout = "RSVP"
 </section>
 <section class="section">
   <div class="container">
-    <form  id="rsvp">
+    <form id="rsvp">
 
-      <?-- Are you coming? --> 
-      <div class="tabs  is-centered is-toggle">
+      <!-- Are you coming? --> 
+      <div class="tabs is-centered is-toggle">
         <ul>
-          <li>
+          <li v-bind:class="{ 'is-active': attending }">
             <a>
               <span class="icon is-small"><i class="fa fa-heart"></i></span>
               <span>Accept with pleasure</span>
             </a>
           </li>
-          <li>
+          <li v-bind:class="{ 'is-active': attending === false }">
             <a>
               <span class="icon is-small"><i class="fa fa-heart-o"></i></span>
               <span>Decline with regret</span>
@@ -53,7 +53,7 @@ layout = "RSVP"
         </div>
       </div>
 
-      <?-- Guest entry -->
+      <!-- Guest entry -->
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Guest</label>
@@ -92,7 +92,7 @@ layout = "RSVP"
         </div>
       </div>
 
-      <?-- Dietary Textarea -->
+      <!-- Dietary Textarea -->
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Dietary Restrictions</label>
@@ -106,7 +106,7 @@ layout = "RSVP"
         </div>
       </div>
 
-      <?-- Add Guest -->
+      <!-- Add Guest -->
       <div class="field is-horizontal">
         <div class="field-label">
           <!-- Left empty for spacing -->
@@ -123,7 +123,7 @@ layout = "RSVP"
       </div>
 
       </br>
-      <?-- Submit -->
+      <!-- Submit -->
       <div class="field is-horizontal">
         <div class="field-label">
           <!-- Left empty for spacing -->

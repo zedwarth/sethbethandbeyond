@@ -1,5 +1,9 @@
 import Vue from 'vue'
 
-var rsvp = new Vue({
+var vm = new Vue({
   el: '#rsvp',
+  data: {
+    attending: false,
+    email: null
+  }
 })

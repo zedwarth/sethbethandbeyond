@@ -103,8 +103,9 @@ li {
 }
 
 .rsvp {
-  @include parallax
-  background-image: url(#{$images}rsvp-hero.jpg);
+//  @include parallax
+// background-image: url(#{$images}rsvp-hero.jpg);
+  background-color: rgb(17, 28, 50);
 }
 
 .splash{
