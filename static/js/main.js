@@ -81,11 +81,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 
+function Guest() {
+  this.name = null;
+  this.age = 'Age';
+  this.dietary = false;
+  this.dietaryNotes = null;
+}
+
+var guests = [ new Guest ];
+
 var vm = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#rsvp',
   data: {
-    attending: false,
-    email: null
+    attending: null,
+    email: null,
+    guests: guests
+  },
+  computed: {
+    multiParty: function() {
+      return this.guests.length > 1;
+    }
+  },
+  methods: {
+    addGuest: function () {
+      this.guests.push(new Guest);
+    },
+    removeGuest: function(index) {
+      console.log(guests[index]);
+      this.guests.splice(index, 1);
+    }
   }
 })
 
