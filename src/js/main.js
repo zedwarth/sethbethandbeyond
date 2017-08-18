@@ -4,8 +4,7 @@ import axios from 'axios'
 const dietaryPlaceholder = 'Kindly tell us about any food allergies or other'
   + 'dietary needs. Vegetarian options will be provided.';
 
-//const apiEndpoint = 'https://api.sethbethandbeyond.com/rsvp';
-const apiEndpoint = 'https://5lsifrx18j.execute-api.us-east-1.amazonaws.com/dev';
+const apiEndpoint = 'https://api.sethbethandbeyond.com/rsvp';
 
 function Guest() {
   this.name = null;
