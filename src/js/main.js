@@ -1,7 +1,10 @@
 import Vue from 'vue'
+import axios from 'axios'
 
 const dietaryPlaceholder = 'Kindly tell us about any food allergies or other'
   + 'dietary needs. Vegetarian options will be provided.';
+
+const apiEndpoint = 'https://api.sethbethandbeyond.com/rsvp';
 
 function Guest() {
   this.name = null;
@@ -18,7 +21,8 @@ var vm = new Vue({
     attending: null,
     dietaryPlaceholder: dietaryPlaceholder,
     email: null,
-    guests: guests
+    guests: guests,
+    posting: false
   },
   computed: {
     multiParty: function() {
@@ -31,6 +35,22 @@ var vm = new Vue({
     },
     dietaryToggle: function(guest) {
       guest.dietary = !guest.dietary
+    },
+    postForm: function() {
+      this.posting = true;
+      axios.post(apiEndpoint, {
+        attending: this.attending,
+        email: this.email,
+        guests: this.guests
+      })
+      .then(function (response) {
+        console.log(response);
+        window.location.href = "/";
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      this.posting = false;
     },
     removeGuest: function(index) {
       this.guests.splice(index, 1);

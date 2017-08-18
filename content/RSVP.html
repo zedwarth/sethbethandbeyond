@@ -20,7 +20,7 @@ layout = "RSVP"
 <section class="section">
   <div class="container">
     <form id="rsvp"
-      v-on:submit.prevent="onSubmit">
+      v-on:submit.prevent="postForm">
 
       <!-- Are you coming? --> 
       <div class="tabs is-centered is-toggle">
@@ -171,7 +171,8 @@ layout = "RSVP"
           <div class="field-body">
             <div class="field is-grouped is-grouped-right">
               <div class="control">
-                <button class="button is-primary">Submit</button>
+                <button class="button is-primary"
+                  v-bind:class="{ 'is-loading': posting }">Submit</button>
               </div>
             </div>
           </div>
