@@ -21,7 +21,8 @@ var vm = new Vue({
     attending: null,
     dietaryPlaceholder: dietaryPlaceholder,
     email: null,
-    guests: guests
+    guests: guests,
+    posting: false
   },
   computed: {
     multiParty: function() {
@@ -36,6 +37,7 @@ var vm = new Vue({
       guest.dietary = !guest.dietary
     },
     postForm: function() {
+      this.posting = true;
       axios.post(apiEndpoint, {
         attending: this.attending,
         email: this.email,
@@ -43,10 +45,12 @@ var vm = new Vue({
       })
       .then(function (response) {
         console.log(response);
+        window.location.href = "/";
       })
       .catch(function (error) {
         console.log(error);
       });
+      this.posting = false;
     },
     removeGuest: function(index) {
       this.guests.splice(index, 1);
