@@ -27,6 +27,10 @@ var vm = new Vue({
   computed: {
     multiParty: function() {
       return this.guests.length > 1;
+    },
+    disableSubmit: function() {
+      console.log("Posting?", this.posting);
+      return this.posting;
     }
   },
   methods: {
@@ -38,6 +42,8 @@ var vm = new Vue({
     },
     postForm: function() {
       this.posting = true;
+      var self = this;
+
       axios.post(apiEndpoint, {
         attending: this.attending,
         email: this.email,
@@ -49,8 +55,9 @@ var vm = new Vue({
       })
       .catch(function (error) {
         console.log(error);
+        self.posting = false;
       });
-      this.posting = false;
+
     },
     removeGuest: function(index) {
       this.guests.splice(index, 1);

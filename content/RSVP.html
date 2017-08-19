@@ -179,7 +179,8 @@ layout = "RSVP"
           <div class="field is-grouped is-grouped-right">
             <div class="control">
               <button class="button is-primary"
-                v-bind:class="{ 'is-loading': posting }">Submit</button>
+                v-bind:class="{ 'is-loading': posting }"
+                :disabled=disableSubmit>Submit</button>
             </div>
           </div>
         </div>
