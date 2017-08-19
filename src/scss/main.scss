@@ -108,6 +108,14 @@ li {
   background-color: rgb(17, 28, 50);
 }
 
+.rsvp-text {
+  padding-bottom: 2em;
+  .title,
+  .subtitle {
+    color: $black;
+  }
+}
+
 .splash{
   @include parallax
   background-image: url(#{$images}museumstaircase.jpg);
