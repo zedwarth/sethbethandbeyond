@@ -5,8 +5,7 @@ layout = "RSVP"
 +++
 <section class="hero is-large rsvp">
   <div class="hero-header">
-  </div>
-  <div class="hero-body">
+    </div> <div class="hero-body">
   </div>
   <div class="hero-footer">
   </div>
@@ -86,15 +85,18 @@ layout = "RSVP"
       </div>
 
       <!-- Guest entry -->
-      <section class="section"
-        v-if="attending">
+      <div v-if="attending">
         <template v-for="(guest, index) in guests">
-          <div class="field is-horizontal">
+          <div class="field is-horizontal is-grouped-multiline">
             <div class="field-label is-normal">
-              <label class="label">Guest</label>
+              <label class="label">Guest {{index + 1}}</label>
             </div>
-            <div class="field-body">
-              <div class="field has-addons">
+
+            <div class="field-body box">
+
+              <div class="field is-grouped is-grouped-centerend is-grouped-multiline">
+
+                <!-- Guest Name -->
                 <div class="control has-icons-left is-expanded">
                   <input class="input" type="text" placeholder="Full Name"
                   v-model="guest.name">
@@ -102,6 +104,8 @@ layout = "RSVP"
                     <i class="fa fa-user"></i>
                   </span>
                 </div>
+
+                <!-- Guest Age -->
                 <p class="control">
                   <span class="select">
                     <select v-model="guest.age">
@@ -113,14 +117,18 @@ layout = "RSVP"
                     </select>
                   </span>
                 </p>
+
+                <!-- Guest Restrictions -->
                 <p class="control has-icon-right">
                   <button class="button"
                     v-bind:class="{ 'is-info': guest.dietary, 'is-active': guest.dietary}"
                     v-on:click.prevent="dietaryToggle(guest)">
                     <span class="icon is-small is-right"><i class="fa fa-cutlery"></i></span>
-                    <span>Dietary Restrictions</span>
+                    <span>Dietary Restrictions?</span>
                   </button>
                 </p>
+
+                <!-- Delete Guest -->
                 <p class="control">
                   <div class="button"
                     v-if="multiParty"
@@ -129,17 +137,17 @@ layout = "RSVP"
                   </div>
                 </p>
               </div>
+
             </div>
           </div>
 
           <!-- Dietary Textarea -->
-          <div class="field is-horizontal"
+          <div class="field is-horizontal" 
             v-if="guest.dietary">
-            <div class="field-label is-normal">
-              <label class="label">Dietary Restrictions</label>
+            <div class="field-label">
             </div>
-            <div class="field-body">
-              <div class="field">
+            <div class="field-body box">
+              <div class="field is-expanded">
                 <div class="control">
                   <textarea class="textarea" 
                     v-bind:placeholder="dietaryPlaceholder"
@@ -148,6 +156,7 @@ layout = "RSVP"
               </div>
             </div>
           </div>
+
         </template>
 
         <!-- Add Guest -->
@@ -166,10 +175,8 @@ layout = "RSVP"
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-
-      </br>
       <!-- Submit -->
       <div class="field is-horizontal">
         <div class="field-label">

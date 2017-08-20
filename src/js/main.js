@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 const dietaryPlaceholder = 'Kindly tell us about any food allergies or other'
-  + 'dietary needs. Vegetarian options will be provided.';
+  + ' dietary restrictions. Vegetarian options will be provided.';
 
 const apiEndpoint = 'https://api.sethbethandbeyond.com/rsvp';
 
