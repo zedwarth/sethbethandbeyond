@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import axios from 'axios'
+import VueScrollTo from 'vue-scrollto'
+
+Vue.use(VueScrollTo)
 
 const dietaryPlaceholder = 'Kindly tell us about any food allergies or other'
   + ' dietary restrictions. Vegetarian options will be provided.';
@@ -14,6 +17,7 @@ function Guest() {
 }
 
 var guests = [ new Guest ];
+
 
 var vm = new Vue({
   el: '#rsvp',

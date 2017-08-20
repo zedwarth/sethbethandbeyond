@@ -32,6 +32,12 @@ li {
   background-image: url(#{$images}engagment-aviary.jpg);
 }
 
+.footer,
+footer {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .four-oh-four {
   @include parallax
   background-image: url(#{$images}penguins.gif);

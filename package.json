@@ -1,6 +1,6 @@
 {
   "name": "sethbethandbeyond.com",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "sethbethandbeyond.com wedding website",
   "main": "static-src/js/index.js",
   "scripts": {
@@ -44,6 +44,7 @@
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "vue": "^2.4.2",
+    "vue-scrollto": "^2.7.2",
     "webpack": "^3.4.1"
   }
 }

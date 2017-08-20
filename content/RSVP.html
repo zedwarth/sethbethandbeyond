@@ -31,13 +31,15 @@ layout = "RSVP"
           <p class="control">
             <a class="button"
               v-bind:class="{ 'is-active': attending }"
-              v-on:click="attending  = true">
+              v-on:click="attending  = true"
+              v-scroll-to="'#guest'">
               <span class="icon is-small"><i class="fa fa-heart"></i></span>
               <span>Accept</span>
             </a>
             <a class="button"
               v-bind:class="{ 'is-active': attending === false }"
-              v-on:click="attending = false">
+              v-on:click="attending = false"
+              v-scroll-to="'#guest'">
               <span class="icon is-small"><i class="fa fa-heart-o"></i></span>
               <span>Regret</span>
             </a>
@@ -46,6 +48,7 @@ layout = "RSVP"
       </div>
     </div>
 
+    <div id="guest"></div>
     <section class="section"
       v-if="attending !== null">
       <div class="field is-horizontal"
@@ -85,9 +88,9 @@ layout = "RSVP"
       </div>
 
       <!-- Guest entry -->
-      <div v-if="attending">
+      <div id="guest" v-if="attending">
         <template v-for="(guest, index) in guests">
-          <div class="field is-horizontal is-grouped-multiline">
+          <div class="field is-horizontal is-grouped-multiline" id="guest">
             <div class="field-label is-normal">
               <label class="label">Guest {{index + 1}}</label>
             </div>
@@ -187,7 +190,7 @@ layout = "RSVP"
             <div class="control">
               <button class="button is-primary"
                 v-bind:class="{ 'is-loading': posting }"
-                :disabled=disableSubmit>Submit</button>
+                :disabled=disableSubmit>Send</button>
             </div>
           </div>
         </div>
@@ -196,3 +199,11 @@ layout = "RSVP"
     </div>
   </section>
 </section>
+<footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        Please email any questions to <a href="mailto:rsvp@sethbethandbeyond.com">RSVP@sethbethandbeyond.com</a>.
+      </p>
+    </div>
+  </div>
+</footer>
