@@ -130,6 +130,12 @@ footer {
       top: -5em;
     }
   }
+  .button {
+    background-color: rgba(0,0,0,0);
+    border: .1rem solid;
+    color: $white;
+    font-weight: bolder;
+  }
 }
 
 .title,
