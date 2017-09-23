@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueScrollTo from 'vue-scrollto'
+import VeeValidate from 'vee-validate'
 
+Vue.use(VeeValidate)
 Vue.use(VueScrollTo)
 
 const dietaryPlaceholder = 'Kindly tell us about any food allergies or other'
@@ -29,12 +31,13 @@ var vm = new Vue({
     posting: false
   },
   computed: {
+    disableSubmit: function() {
+      console.log('posting?', this.posting);
+      console.log('errors?', this.errors.any());
+      return this.posting || this.errors.any() || this.guests.every(this.guestLacksRequiredFields);
+    },
     multiParty: function() {
       return this.guests.length > 1;
-    },
-    disableSubmit: function() {
-      console.log("Posting?", this.posting);
-      return this.posting;
     }
   },
   methods: {
@@ -43,6 +46,16 @@ var vm = new Vue({
     },
     dietaryToggle: function(guest) {
       guest.dietary = !guest.dietary
+    },
+    guestLacksRequiredFields: function(guest) {
+      var validDietary = guest.dietary ? guest.dietaryNotes : true;
+      var validAge = guest.age !== 'Age';
+
+      if (this.attending) {
+        return !(guest.name && validAge && validDietary);
+      } else {
+        return Boolean(guest.name);
+      }
     },
     postForm: function() {
       this.posting = true;
@@ -53,15 +66,12 @@ var vm = new Vue({
         email: this.email,
         guests: this.guests
       })
-      .then(function (response) {
-        console.log(response);
-        window.location.href = "/";
-      })
-      .catch(function (error) {
-        console.log(error);
-        self.posting = false;
-      });
-
+        .then(function (response) {
+          window.location.href = "/";
+        })
+        .catch(function (error) {
+          self.posting = false;
+        });
     },
     removeGuest: function(index) {
       this.guests.splice(index, 1);

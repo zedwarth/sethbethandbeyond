@@ -60,9 +60,17 @@ layout = "RSVP"
           <div class="field has-addons">
             <p class="control is-expanded has-icons-left">
               <input class="input" type="text" placeholder="Full Name"
+              :class="{ 'is-danger': errors.has('name0') }"
+              :name="'name0'"
+              data-vv-as="Full name"
+              v-validate="'required|alpha_spaces'"
               v-model="guests[0].name">
               <span class="icon is-small is-left">
                 <i class="fa fa-user"></i>
+              </span>
+              <span class="help is-danger"
+                v-show="errors.has('name0')" >
+                {{ errors.first('name0')}}
               </span>
             </p>
           </div>
@@ -76,12 +84,15 @@ layout = "RSVP"
         <div class="field-body">
           <div class="field has-addons">
             <p class="control is-expanded has-icons-left">
-              <input class="input" type="email"
-              v-bind:placeholder="attending ? 'Guest@example.com' : ''"
+              <input class="input" type="email" name="email"
+              v-validate="'email'"
+              v-bind:class="{'is-danger': errors.has('email')}"
+              v-bind:placeholder="attending ? 'Guest@example.com' : 'name@example.com'"
               v-model="email">
               <span class="icon is-small is-left">
                 <i class="fa fa-envelope"></i>
               </span>
+              <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
             </p>
           </div>
         </div>
@@ -101,23 +112,42 @@ layout = "RSVP"
 
                 <!-- Guest Name -->
                 <div class="control has-icons-left is-expanded">
-                  <input class="input" type="text" placeholder="Full Name"
+                  <input class="input" name="name" type="text" placeholder="Full Name"
+                  :class="{ 'is-danger': errors.has('name') }"
+                  :name="'name' + index"
+                  data-vv-as="Full name"
+                  v-validate="'required|alpha_spaces'"
                   v-model="guest.name">
                   <span class="icon is-small is-left">
                     <i class="fa fa-user"></i>
                   </span>
+                  <span class="help is-danger"
+                    v-show="errors.has('name' + index)" >
+                    {{ errors.first('name' + index)}}
+                  </span>
                 </div>
 
                 <!-- Guest Age -->
-                <p class="control">
-                  <span class="select">
-                    <select v-model="guest.age">
-                      <option selected disabled>Age</option>
-                      <option>Over 21</option>
-                      <option>16-20</option>
-                      <option>6-15 </option>
-                      <option>0-5  </option>
+                <p class="control has-icons-left">
+                  <span class="select"
+                    :class="{ 'is-danger': errors.has('age' + index) }">
+                    <select :name="'age' + index" 
+                      data-vv-as="Age"
+                      v-validate="'required|in:Over 21,16-20,6-15,0-5'"
+                      v-model="guest.age">
+                      <option selected>Age</option>
+                      <option value="Over 21">Over 21</option>
+                      <option value="16-20">16-20</option>
+                      <option value="6-15">6-15 </option>
+                      <option value="0-5">0-5  </option>
                     </select>
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-calendar"></i>
+                    </span>
+                  </span>
+                  <span class="help is-danger"
+                    v-show="errors.has('age' + index)" >
+                    {{ errors.first('age' + index)}}
                   </span>
                 </p>
 
@@ -153,6 +183,8 @@ layout = "RSVP"
               <div class="field is-expanded">
                 <div class="control">
                   <textarea class="textarea" 
+                    data-vv-as="dietary"
+                    v-validate="'required'"
                     v-bind:placeholder="dietaryPlaceholder"
                     v-model="guest.dietaryNotes"></textarea>
                 </div>
@@ -165,7 +197,7 @@ layout = "RSVP"
         <!-- Add Guest -->
         <div class="field is-horizontal">
           <div class="field-label">
-            <!-- Left empty for spacing -->
+            Add Guest
           </div>
           <div class="field-body">
             <div class="field">
